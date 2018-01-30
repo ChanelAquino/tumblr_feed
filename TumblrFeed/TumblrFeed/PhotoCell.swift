@@ -9,8 +9,8 @@
 import UIKit
 
 class PhotoCell: UITableViewCell {
+
     @IBOutlet weak var photoImageView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,6 +20,14 @@ class PhotoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        
+        // Configure YourCustomCell using the outlets that you've defined.
+        
+        return cell
     }
 
 }
