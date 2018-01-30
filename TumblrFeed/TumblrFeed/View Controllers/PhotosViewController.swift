@@ -105,6 +105,20 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         cell.textLabel?.text = "This is row \(indexPath.row)"
         self.postsTableView.reloadData()
 
+
+        return cell
+    }
+
+
+    // ---------------------------------
+    // cellForRowAtIndexPath
+    //      dequeque the cell
+    // ---------------------------------
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+        
+        // Configure YourCustomCell using the outlets that you've defined.
+        
         return cell
     }
 
