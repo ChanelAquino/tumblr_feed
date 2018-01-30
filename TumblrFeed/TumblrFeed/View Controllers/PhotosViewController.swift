@@ -85,6 +85,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         let post = posts[indexPath.row] // pull out a single post from posts array
 <<<<<<< HEAD
+<<<<<<< HEAD
         if let photos = post["photos"] as? [[String: Any]] {
             // photos is NOT nil, we can use it!
             // TODO: Get the photo url
@@ -100,6 +101,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             // retrieve image from url
             photoCell.photoImageView.af_setImage(withURL: url!)
         }
+=======
+>>>>>>> parent of 5dc9fd3... Getting image url
 =======
 >>>>>>> parent of 5dc9fd3... Getting image url
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
