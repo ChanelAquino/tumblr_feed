@@ -59,6 +59,18 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post = posts[indexPath.row] // pull out a single post from posts array
+        if let photos = post["photos"] as? [[String: Any]] {
+            // photos is NOT nil, we can use it!
+            // TODO: Get the photo url
+            // First photo in array
+            let photo = photos[0]
+            // originalSize dictionary from photo
+            let originalSize = photo["original_size"] as! [String: Any]
+            // get url from the originalSize dictionary from photo
+            let urlString = originalSize["url"] as! String
+            // creates a url
+            let url = URL(string: urlString)
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         cell.textLabel?.text = "This is row \(indexPath.row)"
         
