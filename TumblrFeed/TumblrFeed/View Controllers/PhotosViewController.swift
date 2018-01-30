@@ -57,6 +57,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     
     // function to return the cell for each row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let post = posts[indexPath.row] // pull out a single post from posts array
         let cell = UITableViewCell()
         cell.textLabel?.text = "This is row \(indexPath.row)"
         
@@ -65,7 +67,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
 
     // dequeque the cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "YourCustomCell") as! YourCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
         // Configure YourCustomCell using the outlets that you've defined.
         
