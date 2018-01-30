@@ -9,13 +9,13 @@
 import UIKit
 import AlamofireImage
 
-class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotosViewController:  UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // ---------------------------------
     // outlets
     // ---------------------------------
     
-    @IBOutlet weak var postsTableView: UITableView! // outlet for posts
+    @IBOutlet weak var tableView: UITableView! // outlet for posts
     @IBOutlet weak var photoCell: PhotoCell!        // outlet for photos
     
     // ---------------------------------
@@ -31,8 +31,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         // configure tableView properties
-        postsTableView.delegate = self
-        postsTableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")!
         
@@ -53,6 +53,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
                 self.posts = responseDictionary["posts"] as! [[String: Any]]
                 
                 // TODO: Reload the table view
+                self.tableView.reloadData()
             }
         }
         
@@ -83,8 +84,11 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     // ---------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        cell.textLabel?.text = "This is row \(indexPath.row)"
+        
         let post = posts[indexPath.row] // pull out a single post from posts array
-
         if let photos = post["photos"] as? [[String: Any]] {
             // photos is NOT nil, we can use it!
             // TODO: Get the photo url
@@ -98,13 +102,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             let url = URL(string: urlString)
             
             // retrieve image from url
-            photoCell.photoImageView.af_setImage(withURL: url!)
+            cell.photoImageView.af_setImage(withURL: url!)
         }
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        cell.textLabel?.text = "This is row \(indexPath.row)"
-        self.postsTableView.reloadData()
-
 
         return cell
     }
