@@ -15,9 +15,9 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
     // ---------------------------------
     // outlets
     // ---------------------------------
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var tableView: UITableView! // outlet for posts
-    @IBOutlet weak var photoCell: PhotoCell!        // outlet for photos
+    
     
     // ---------------------------------
     // properties
@@ -34,6 +34,7 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
         // configure tableView properties
         tableView.delegate = self
         tableView.dataSource = self
+    
         
         let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")!
         
@@ -48,12 +49,13 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 print(dataDictionary)
                 
-                // Get the dictionary from the response key
+                // get the dictionary from the response key
                 let responseDictionary = dataDictionary["response"] as! [String: Any]
-                // Store the returned array of dictionaries in our posts property
+                
+                // store the returned array of dictionaries in our posts property
                 self.posts = responseDictionary["posts"] as! [[String: Any]]
                 
-                // TODO: Reload the table view
+                // reload the table view
                 self.tableView.reloadData()
             }
         }
@@ -76,7 +78,12 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
     //      set number of rows
     // ---------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return posts.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150.0
     }
     
     // ---------------------------------
@@ -84,28 +91,28 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
     //      return the cell for each row
     // ---------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         cell.textLabel?.text = "This is row \(indexPath.row)"
         
-        let post = posts[indexPath.row] // pull out a single post from posts array
+        let post = posts[indexPath.row] // pull single post from posts array
+        
         if let photos = post["photos"] as? [[String: Any]] {
             // photos is NOT nil, we can use it!
-            // TODO: Get the photo url
-            // First photo in array
+            // get the photo url
+            
+            // get first photo in array
             let photo = photos[0]
-            // originalSize dictionary from photo
+            // get originalSize of photo
             let originalSize = photo["original_size"] as! [String: Any]
-            // get url from the originalSize dictionary from photo
+            // get url from the originalSize dictionary
             let urlString = originalSize["url"] as! String
-            // creates a url
+            // create a url
             let url = URL(string: urlString)
             
-            // retrieve image from url
+            // retrieve the image
             cell.photoImageView.af_setImage(withURL: url!)
         }
-
+        
         return cell
     }
 
@@ -114,9 +121,10 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
     // cellForRowAtIndexPath
     //      dequeque the cell
     // ---------------------------------
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
+
         // Configure YourCustomCell using the outlets that you've defined.
         
         return cell
