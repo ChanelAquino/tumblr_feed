@@ -92,7 +92,7 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
     // ---------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        cell.textLabel?.text = "This is row \(indexPath.row)"
+        
         
         let post = posts[indexPath.row] // pull single post from posts array
         
@@ -108,6 +108,10 @@ class PhotosViewController:  UIViewController, UITableViewDataSource, UITableVie
             let urlString = originalSize["url"] as! String
             // create a url
             let url = URL(string: urlString)
+            
+            //image resizing
+//            let screenSize: CGRect = UIScreen.main.bounds
+//            cell.photoImage
             
             // retrieve the image
             cell.photoImageView.af_setImage(withURL: url!)
