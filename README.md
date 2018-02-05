@@ -27,7 +27,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1.
 2.
 
-## Video Walkthroughhttps://github.com/ChanelAquino/tumblr_feed/blob/master/tumblerFeed.gif?raw=true
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
