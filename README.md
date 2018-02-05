@@ -27,11 +27,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1.
 2.
 
-## Video Walkthrough
+## Video Walkthroughhttps://github.com/ChanelAquino/tumblr_feed/blob/master/tumblerFeed.gif?raw=true
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/ChanelAquino/tumblr_feed/blob/master/tumblerFeed.gif?raw=true' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
