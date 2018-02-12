@@ -10,8 +10,9 @@ import UIKit
 
 class PhotoDetailsViewController: UIViewController {
 
+    @IBOutlet weak var photoImageView: UIImageView!
     var photoURL: URL!
-    @IBOutlet var photoImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoImageView.af_setImage(withURL: photoURL!)
