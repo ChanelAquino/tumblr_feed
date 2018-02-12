@@ -64,10 +64,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="zGq-4r-ehn"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JTf-yq-1uV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ke7-WU-5x4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277.5999999999999" y="47.226386806596707"/>
+            <point key="canvasLocation" x="1890" y="173"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3RR-bZ-gxq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rMO-8j-4jv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u1i-el-hsN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mAP-2M-tOK" kind="relationship" relationship="rootViewController" id="Fgi-TV-oyK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Zq-Lk-MhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276.8" y="46.776611694152926"/>
         </scene>
     </scenes>
 </document>
